@@ -6,14 +6,14 @@ using namespace std;
 #include "funcionesAuxiliares.h"
 
 int main() {
-    int M = 3, N = 4; //M es la cant camiones y N la cantidad de paquetes 
+    int M = 4, N = 5; //M es la cant camiones y N la cantidad de paquetes 
     //Ingreso de datos: 
-    /*
-    cout << "Ingrese el numero de caniones y luego el numero de Paquetes " << endl;
-    cin >> M >> N;
-    */
-     struct strPaquetes arrPaquete[N]{{50},{20},{30},{50}};
-     struct StrCamiones arrCamiones[M]{{100},{100},{100}};
+    
+//    cout << "Ingrese el numero de caniones y luego el numero de Paquetes " << endl;
+//    cin >> M >> N;
+    
+     struct strPaquetes arrPaquete[N]{{50},{20},{30},{50},{20}};
+     struct StrCamiones arrCamiones[M]{{25},{50},{100},{100}};
     //Ingresar las cargas  y capacidad
      //cout << "Ingrese el peso de cada paquete: "<<endl;
     // for (int i = 0; i < N; i++) cin >> arrPaquete[i].peso;
