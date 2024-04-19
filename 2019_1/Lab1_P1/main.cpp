@@ -34,25 +34,27 @@ void buscarMejorSeleccion(int matDatos[][2], int cantArt, int pesoMaximo, int ar
         cargarBin(i, combin_n);
         //4.- se carga el peso parcial de la combinacion y se verifica las restricciones
         for (int j = 0; j < cantArt; j++) {
-            if (pesoParcial > pesoMaximo or articulosEquipados > articulosMax) {
-                flag = 1;
-                break; //Acab
-            } else
-                if (combin_n[j] != 0) {
+            if (combin_n[j] != 0) {
                 pesoParcial += matDatos[j][0];
                 ganaParcial += matDatos[j][1];
                 articulosEquipados++;
+                if (pesoParcial > pesoMaximo  or articulosEquipados > articulosMax) {
+                    flag = 1;
+                    break; //Acabar
+                }
             }
         }
-
-        if (flag == 1) break; //se usa la bandera para descartar la combinacion
+        
         //5.- Se buscará la opccion mas optima (Si llega hasta acá cumplio todas las restricciones)
-        if (mejorGanancia <= ganaParcial and mejorPeso <= pesoParcial) {
-            mejorPeso = pesoParcial;
-            mejorGanancia = ganaParcial;
-            mejorOpcion = i;
-        }
+        if (flag != 1) { //se verifica de que el esta en el rango de peso
+            if (mejorGanancia <= ganaParcial and mejorPeso <= pesoParcial) {
+                mejorPeso = pesoParcial;
+                mejorGanancia = ganaParcial;
+                mejorOpcion = i;
+            }
+        } 
     }
+
 
     if (mejorOpcion != -1) {
         cargarBin(mejorOpcion, mejorCombi);
@@ -61,6 +63,9 @@ void buscarMejorSeleccion(int matDatos[][2], int cantArt, int pesoMaximo, int ar
     for (int i = 0; i < cantArt; i++) {
         if (mejorCombi[i] != 0) cout << i + 1 << " ";
     }
+    cout<<endl<<"Ganancia Total "<<mejorGanancia<<endl;
+    cout<<"Peso Total "<<mejorPeso<<endl;
+    
 }
 
 int main(int argc, char** argv) {
